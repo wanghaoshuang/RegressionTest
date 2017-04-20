@@ -38,7 +38,7 @@ RUN cd / && git clone https://github.com/PaddlePaddle/Paddle.git && \
     cd Paddle && git checkout release/0.10.0
 COPY run.sh /
 COPY test.patch /
-RUN cd /Paddle && patch -p0 /test.patch
+RUN cd /Paddle && patch -p0 </test.patch
 CMD /run.sh
 EOF
 
