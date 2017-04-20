@@ -1,0 +1,12 @@
+diff --git demo/mnist/mnist_provider.py demo/mnist/mnist_provider.py
+index 888cfef..6bc60c4 100644
+--- demo/mnist/mnist_provider.py
++++ demo/mnist/mnist_provider.py
+@@ -8,5 +8,6 @@ from mnist_util import read_from_mnist
+                  'label': integer_value(10)},
+     cache=CacheType.CACHE_PASS_IN_MEM)
+ def process(settings, filename):  # settings is not used currently.
+-    for each in read_from_mnist(filename):
++    for i, each in enumerate(read_from_mnist(filename)):
++        if i == 1000: break
+         yield each
