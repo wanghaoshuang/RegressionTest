@@ -1,13 +1,3 @@
-diff --git demo/image_classification/data/download_cifar.sh demo/image_classification/data/download_cifar.sh
-index 532178d..9e90b2a 100755
---- demo/image_classification/data/download_cifar.sh
-+++ demo/image_classification/data/download_cifar.sh
-@@ -18,4 +18,4 @@ tar zxf cifar-10-python.tar.gz
- rm cifar-10-python.tar.gz
- rm -rf cifar-out/*
- echo Converting CIFAR data to images.....
--python process_cifar.py ./cifar-10-batches-py ./cifar-out
-+python ./data/process_cifar.py ./cifar-10-batches-py ./cifar-out
 diff --git demo/image_classification/image_provider.py demo/image_classification/image_provider.py
 index 6a315ff..2d6afc3 100644
 --- demo/image_classification/image_provider.py
