@@ -1,0 +1,45 @@
+diff --git demo/semantic_role_labeling/data/get_data.sh demo/semantic_role_labeling/data/get_data.sh
+index a0ef26a..4f12ce2 100755
+--- demo/semantic_role_labeling/data/get_data.sh
++++ demo/semantic_role_labeling/data/get_data.sh
+@@ -13,7 +13,7 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ set -e
+-wget http://www.cs.upc.edu/~srlconll/conll05st-tests.tar.gz
++wget http://paddlepaddle.bj.bcebos.com/reg_test/conll05st-tests.tar.gz
+ wget http://paddlepaddle.bj.bcebos.com/demo/srl_dict_and_embedding/verbDict.txt
+ wget http://paddlepaddle.bj.bcebos.com/demo/srl_dict_and_embedding/targetDict.txt 
+ wget http://paddlepaddle.bj.bcebos.com/demo/srl_dict_and_embedding/wordDict.txt 
+diff --git demo/semantic_role_labeling/dataprovider.py demo/semantic_role_labeling/dataprovider.py
+index 360c57e..8e53f37 100644
+--- demo/semantic_role_labeling/dataprovider.py
++++ demo/semantic_role_labeling/dataprovider.py
+@@ -47,7 +47,8 @@ def get_batch_size(yeild_data):
+     cache=CacheType.CACHE_PASS_IN_MEM)
+ def process(settings, file_name):
+     with open(file_name, 'r') as fdata:
+-        for line in fdata:
++        for i, line in enumerate(fdata):
++            if i == 1000: break
+             sentence, predicate, ctx_n2, ctx_n1, ctx_0, ctx_p1, ctx_p2,  mark, label = \
+                 line.strip().split('\t')
+ 
+diff --git demo/semantic_role_labeling/train.sh demo/semantic_role_labeling/train.sh
+index eee1401..0bda75e 100755
+--- demo/semantic_role_labeling/train.sh
++++ demo/semantic_role_labeling/train.sh
+@@ -17,11 +17,11 @@ set -e
+ paddle train \
+   --config=./db_lstm.py \
+   --use_gpu=0 \
+-  --log_period=5000 \
++  --log_period=100 \
+   --trainer_count=1 \
+   --show_parameter_stats_period=5000 \
+   --save_dir=./output \
+-  --num_passes=10000 \
++  --num_passes=4 \
+   --average_test_period=10000000 \
+   --init_model_path=./data \
+   --load_missing_parameter_strategy=rand \
