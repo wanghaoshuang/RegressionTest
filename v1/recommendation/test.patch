@@ -6,8 +6,8 @@ index c4ff96d8..ac1037fa 100755
  def process(settings, filename):
      with open(filename, 'r') as f:
          for line in f:
-+		for cnt, line in enumerate(f):
-+		    if cnt == 1000: break
++		 for cnt, line in enumerate(f):
++		     if cnt == 1000: break
              # Get a rating from file.
              user_id, movie_id, score = map(int, line.split('::')[:-1])
  
