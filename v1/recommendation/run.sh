@@ -1,7 +1,8 @@
 #!/bin/bash
 cd /Paddle/demo/recommendation
 pip install /usr/opt/paddle/share/wheels/*.whl
-pip install docopt
+pip install -r requirements.txt
+apt-get install unzip
 bash data/ml_data.sh
 bash preprocess.sh
 python trainer_config.py
