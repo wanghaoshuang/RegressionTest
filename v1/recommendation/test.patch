@@ -1,13 +1,14 @@
 diff --git demo/recommendation/dataprovider.py demo/recommendation/dataprovider.py
-index c4ff96d8..ac1037fa 100755
+index c4ff96d8..7705e896 100755
 --- demo/recommendation/dataprovider.py
 +++ demo/recommendation/dataprovider.py
-@@ -59,6 +59,8 @@ def hook(settings, meta, **kwargs):
+@@ -58,7 +58,8 @@ def hook(settings, meta, **kwargs):
+ @provider(init_hook=hook, cache=CacheType.CACHE_PASS_IN_MEM)
  def process(settings, filename):
      with open(filename, 'r') as f:
-         for line in f:
-+		 for cnt, line in enumerate(f):
-+		     if cnt == 1000: break
+-        for line in f:
++        for cnt, line in enumerate(f):
++            if cnt == 1000: break
              # Get a rating from file.
              user_id, movie_id, score = map(int, line.split('::')[:-1])
  
