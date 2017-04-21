@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+cur_path="$(cd "$(dirname "$0")" && pwd -P)"
+
 #paddle book image name
 if [ ! -n "$1" ]; then
   book_image=paddlepaddle/book
@@ -16,4 +18,4 @@ else
 fi
 
 #regression test
-docker run -i --rm -p 8888:8888 -v "$PWD:/reg_test" ${book_image}:${book_tag} /bin/bash /reg_test/demo.sh
+docker run -i --rm -p 8888:8888 -v "${cur_path}:/reg_test" ${book_image}:${book_tag} /bin/bash /reg_test/demo.sh
