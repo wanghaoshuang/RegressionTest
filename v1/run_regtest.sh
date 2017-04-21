@@ -42,7 +42,9 @@ RUN cd /Paddle && patch -p0 </test.patch
 CMD /run.sh
 EOF
 
+IMG_NAME=paddle_regtest_${DIRNAME}_${RANDOM}
+
 cd ${DIRNAME}
-docker build -t paddle_regtest_${DIRNAME} .
-docker run -it --rm paddle_regtest_${DIRNAME}
-docker rmi paddle_regtest_${DIRNAME}
+docker build -t ${IMG_NAME} .
+docker run -it --rm ${IMG_NAME}
+docker rmi ${IMG_NAME}
