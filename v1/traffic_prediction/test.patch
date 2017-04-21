@@ -1,0 +1,38 @@
+diff --git demo/traffic_prediction/dataprovider.py demo/traffic_prediction/dataprovider.py
+index c7883b6..cb7d56c 100644
+--- demo/traffic_prediction/dataprovider.py
++++ demo/traffic_prediction/dataprovider.py
+@@ -48,6 +48,7 @@ def process(settings, file_name):
+         #abandon fields name
+         f.next()
+         for row_num, line in enumerate(f):
++            if row_num == 10: break
+             speeds = map(int, line.rstrip('\r\n').split(",")[1:])
+             # Get the max index.
+             end_time = len(speeds)
+@@ -76,6 +77,7 @@ def process_predict(settings, file_name):
+         #abandon fields name
+         f.next()
+         for row_num, line in enumerate(f):
++            if row_num == 1000: break
+             speeds = map(int, line.rstrip('\r\n').split(","))
+             end_time = len(speeds)
+             pre_spd = map(float, speeds[end_time - TERM_NUM:end_time])
+diff --git demo/traffic_prediction/train.sh demo/traffic_prediction/train.sh
+index 48dfc56..1d371ce 100755
+--- demo/traffic_prediction/train.sh
++++ demo/traffic_prediction/train.sh
+@@ -18,10 +18,10 @@ cfg=trainer_config.py
+ paddle train \
+   --config=$cfg \
+   --save_dir=./output \
+-  --trainer_count=4 \
++  --trainer_count=1 \
+   --log_period=1000 \
+-  --dot_period=10 \
+-  --num_passes=10 \
++  --dot_period=1 \
++  --num_passes=4 \
+   --use_gpu=false \
+   --show_parameter_stats_period=3000 \
+   2>&1 | tee 'train.log'
