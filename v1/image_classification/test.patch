@@ -1,16 +1,3 @@
-diff --git demo/image_classification/data/download_cifar.sh demo/image_classification/data/download_cifar.sh
-index 532178d..d5fc1d5 100755
---- demo/image_classification/data/download_cifar.sh
-+++ demo/image_classification/data/download_cifar.sh
-@@ -13,7 +13,7 @@
- # See the License for the specific language governing permissions and
- # limitations under the License.
- set -e
--wget https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz
-+wget http://paddlepaddle.bj.bcebos.com/reg_test/cifar-10-python.tar.gz
- tar zxf cifar-10-python.tar.gz
- rm cifar-10-python.tar.gz
- rm -rf cifar-out/*
 diff --git demo/image_classification/image_provider.py demo/image_classification/image_provider.py
 index 6a315ff..9b7715e 100644
 --- demo/image_classification/image_provider.py
