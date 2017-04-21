@@ -1,0 +1,24 @@
+diff --git demo/recommendation/dataprovider.py demo/recommendation/dataprovider.py
+index c4ff96d8..ac1037fa 100755
+--- demo/recommendation/dataprovider.py
++++ demo/recommendation/dataprovider.py
+@@ -59,6 +59,8 @@ def hook(settings, meta, **kwargs):
+ def process(settings, filename):
+     with open(filename, 'r') as f:
+         for line in f:
++		 for cnt, line in enumerate(f):
++		     if cnt == 1000: break
+             # Get a rating from file.
+             user_id, movie_id, score = map(int, line.split('::')[:-1])
+ 
+diff --git demo/recommendation/run.sh demo/recommendation/run.sh
+index 22aef556..b908076b 100755
+--- demo/recommendation/run.sh
++++ demo/recommendation/run.sh
+@@ -21,5 +21,5 @@ paddle train \
+     --test_all_data_in_one_period=true \
+     --log_period=100 \
+     --dot_period=1 \
+-    --num_passes=50  2>&1 | tee 'log.txt'
++    --num_passes=2  2>&1 | tee 'log.txt'
+ paddle usage -l log.txt -e $? -n "recommendation" >/dev/null 2>&1

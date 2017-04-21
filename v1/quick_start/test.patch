@@ -1,0 +1,27 @@
+diff --git demo/quick_start/dataprovider_bow.py demo/quick_start/dataprovider_bow.py
+index 2745495..caae505 100644
+--- demo/quick_start/dataprovider_bow.py
++++ demo/quick_start/dataprovider_bow.py
+@@ -54,7 +54,8 @@ def process(settings, file_name):
+     # Open the input data file.
+     with open(file_name, 'r') as f:
+         # Read each line.
+-        for line in f:
++        for i, line in enumerate(f):
++            if i == 1000: break
+             # Each line contains the label and text of the comment, separated by \t.
+             label, comment = line.strip().split('\t')
+ 
+diff --git demo/quick_start/train.sh demo/quick_start/train.sh
+index 01697fe..e34af60 100755
+--- demo/quick_start/train.sh
++++ demo/quick_start/train.sh
+@@ -26,7 +26,7 @@ paddle train \
+   --save_dir=./output \
+   --trainer_count=4 \
+   --log_period=100 \
+-  --num_passes=15 \
++  --num_passes=1 \
+   --use_gpu=false \
+   --show_parameter_stats_period=100 \
+   --test_all_data_in_one_period=1 \
