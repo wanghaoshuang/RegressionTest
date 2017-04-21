@@ -1,0 +1,32 @@
+diff --git demo/sequence_tagging/dataprovider.py demo/sequence_tagging/dataprovider.py
+index bb4b446..b178e26 100644
+--- demo/sequence_tagging/dataprovider.py
++++ demo/sequence_tagging/dataprovider.py
+@@ -244,7 +244,8 @@ def process(settings, filename):
+ 
+     num_sequences = 0
+     sequence = []
+-    for line in f:
++    for i, line in enumerate(f):
++        if i == 1000: break
+         line = line.strip()
+         if not line:
+             make_features(sequence)
+diff --git demo/sequence_tagging/train.sh demo/sequence_tagging/train.sh
+index 37e196c..3ebac0e 100755
+--- demo/sequence_tagging/train.sh
++++ demo/sequence_tagging/train.sh
+@@ -3,10 +3,10 @@
+ paddle train \
+        --config rnn_crf.py \
+        --parallel_nn=1 \
+-       --use_gpu=1 \
+-       --dot_period=10 \
++       --use_gpu=0 \
++       --dot_period=1 \
+        --log_period=1000 \
+        --test_period=0 \
+-       --num_passes=10 \
++       --num_passes=4 \
+ 2>&1 | tee 'train.log'
+ paddle usage -l 'train.log' -e $? -n "sequence_tagging_train" >/dev/null 2>&1
