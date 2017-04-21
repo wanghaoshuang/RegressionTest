@@ -1,5 +1,5 @@
 diff --git demo/image_classification/image_provider.py demo/image_classification/image_provider.py
-index 6a315ff..2d6afc3 100644
+index 6a315ff..61c72ef 100644
 --- demo/image_classification/image_provider.py
 +++ demo/image_classification/image_provider.py
 @@ -74,7 +74,8 @@ def processData(settings, file_list):
@@ -7,7 +7,7 @@ index 6a315ff..2d6afc3 100644
                  if settings.is_train:
                      random.shuffle(indexes)
 -                for i in indexes:
-+                for cnt, i in enumerator(indexes):
++                for cnt, i in enumerate(indexes):
 +                    if cnt == 1000: break
                      if settings.use_jpeg == 1:
                          img = image_util.decode_jpeg(data['images'][i])
@@ -17,3 +17,23 @@ index 6a315ff..2d6afc3 100644
                          'label': int(label)
                      }
 +
+diff --git demo/image_classification/train.sh demo/image_classification/train.sh
+index e45bd47..2f459ee 100755
+--- demo/image_classification/train.sh
++++ demo/image_classification/train.sh
+@@ -19,12 +19,12 @@ log=train.log
+ 
+ paddle train \
+ --config=$config \
+---dot_period=10 \
++--dot_period=1 \
+ --log_period=100 \
+ --test_all_data_in_one_period=1 \
+---use_gpu=1 \
++--use_gpu=0 \
+ --trainer_count=1 \
+---num_passes=300 \
++--num_passes=4 \
+ --save_dir=$output \
+ 2>&1 | tee $log
+ paddle usage -l $log -e $? -n "image_classification_train" >/dev/null 2>&1
