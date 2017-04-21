@@ -3,7 +3,7 @@ set -e
 
 export DISABLE_PLOT=True
 
-pip install /usr/opt/paddle/share/wheels/*.whl
+find /usr/ -name '*paddle-*whl' | xargs pip install
 
 #01.fit_a_line
 jupyter nbconvert --to python book/01.fit_a_line/README.ipynb --stdout | python
