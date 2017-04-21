@@ -1,5 +1,5 @@
 diff --git demo/recommendation/dataprovider.py demo/recommendation/dataprovider.py
-index c4ff96d8..68a76fad 100755
+index c4ff96d8..7705e896 100755
 --- demo/recommendation/dataprovider.py
 +++ demo/recommendation/dataprovider.py
 @@ -58,7 +58,8 @@ def hook(settings, meta, **kwargs):
@@ -8,7 +8,7 @@ index c4ff96d8..68a76fad 100755
      with open(filename, 'r') as f:
 -        for line in f:
 +        for cnt, line in enumerate(f):
-+		    if cnt == 1000:break
++            if cnt == 1000: break
              # Get a rating from file.
              user_id, movie_id, score = map(int, line.split('::')[:-1])
  
