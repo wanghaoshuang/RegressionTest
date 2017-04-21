@@ -1,0 +1,25 @@
+diff --git demo/sentiment/dataprovider.py demo/sentiment/dataprovider.py
+index 4b7f5d0e..cd158751 100755
+--- demo/sentiment/dataprovider.py
++++ demo/sentiment/dataprovider.py
+@@ -26,6 +26,7 @@ def hook(settings, dictionary, **kwargs):
+ def process(settings, file_name):
+     with open(file_name, 'r') as fdata:
+         for line_count, line in enumerate(fdata):
++            if line_count == 1000: break
+             label, comment = line.strip().split('\t\t')
+             label = int(label)
+             words = comment.split()
+diff --git demo/sentiment/train.sh demo/sentiment/train.sh
+index 14620f73..ae33a001 100755
+--- demo/sentiment/train.sh
++++ demo/sentiment/train.sh
+@@ -21,7 +21,7 @@ paddle train --config=$config \
+              --job=train \
+              --use_gpu=false \
+              --trainer_count=4 \
+-             --num_passes=10 \
++             --num_passes=2 \
+              --log_period=10 \
+              --dot_period=20 \
+              --show_parameter_stats_period=100 \

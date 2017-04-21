@@ -1,8 +1,7 @@
 #!/bin/bash
-cd /Paddle/demo/recommendation
+cd /Paddle/demo/sentiment
 pip install /usr/opt/paddle/share/wheels/*.whl
-pip install -r requirements.txt
 apt-get install -y zip
-bash data/ml_data.sh
+bash data/get_imdb.sh
 bash preprocess.sh
-bash run.sh
+bash train.sh
