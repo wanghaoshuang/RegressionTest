@@ -44,7 +44,13 @@ EOF
 
 IMG_NAME=paddle_regtest_${DIRNAME}_${RANDOM}
 
+if [ -t 1 ] ; then  # if run this script in terminal
+  TERM_OPT="-it"  # then alloc a tty for docker, so we can ctrl+c
+else 
+  TERM_OPT=""
+fi
+
 cd ${DIRNAME}
 docker build -t ${IMG_NAME} .
-docker run -it --rm ${IMG_NAME}
+docker run ${TERM_OPT} --rm ${IMG_NAME}
 docker rmi ${IMG_NAME}
