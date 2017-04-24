@@ -1,48 +1,78 @@
+diff --git 01.fit_a_line/README.en.md 01.fit_a_line/README.en.md
+index ac43473..3c3df78 100644
+--- 01.fit_a_line/README.en.md
++++ 01.fit_a_line/README.en.md
+@@ -217,7 +217,7 @@ trainer.train(
+             uci_housing.train(), buf_size=500),
+         batch_size=2),
+     feeding=feeding,
+-    event_handler=event_handler_plot,
++    event_handler=event_handler,
+     num_passes=30)
+ ```
+ 
+diff --git 01.fit_a_line/README.md 01.fit_a_line/README.md
+index 1b41aa4..409de5a 100644
+--- 01.fit_a_line/README.md
++++ 01.fit_a_line/README.md
+@@ -212,7 +212,7 @@ trainer.train(
+             uci_housing.train(), buf_size=500),
+         batch_size=2),
+     feeding=feeding,
+-    event_handler=event_handler_plot,
++    event_handler=event_handler,
+     num_passes=30)
+ ```
+ 
 diff --git 02.recognize_digits/README.en.md 02.recognize_digits/README.en.md
-index 894d4fa..a9a5198 100644
+index 894d4fa..d6fff42 100644
 --- 02.recognize_digits/README.en.md
 +++ 02.recognize_digits/README.en.md
-@@ -288,8 +288,8 @@ trainer.train(
-         paddle.reader.shuffle(
+@@ -289,7 +289,7 @@ trainer.train(
              paddle.dataset.mnist.train(), buf_size=8192),
          batch_size=128),
--    event_handler=event_handler_plot,
+     event_handler=event_handler_plot,
 -    num_passes=5)
-+    event_handler=event_handler,
 +    num_passes=1)
  ```
  
  During training, `trainer.train` invokes `event_handler` for certain events. This gives us a chance to print the training progress.
-@@ -331,7 +331,7 @@ def load_image(file):
+@@ -330,8 +330,7 @@ def load_image(file):
+     return im
  
  test_data = []
- cur_dir = os.path.dirname(os.path.realpath(__file__))
+-cur_dir = os.path.dirname(os.path.realpath(__file__))
 -test_data.append((load_image(cur_dir + '/image/infer_3.png'),))
 +test_data.append((load_image('/book/02.recognize_digits/image/infer_3.png'),))
  
  probs = paddle.infer(
      output_layer=predict, parameters=parameters, input=test_data)
 diff --git 02.recognize_digits/README.md 02.recognize_digits/README.md
-index edb8072..638d6b9 100644
+index edb8072..8e2b0e3 100644
 --- 02.recognize_digits/README.md
 +++ 02.recognize_digits/README.md
-@@ -292,8 +292,8 @@ trainer.train(
-         paddle.reader.shuffle(
+@@ -293,7 +293,7 @@ trainer.train(
              paddle.dataset.mnist.train(), buf_size=8192),
          batch_size=128),
--    event_handler=event_handler_plot,
+     event_handler=event_handler_plot,
 -    num_passes=5)
-+    event_handler=event_handler,
 +    num_passes=1)
  ```
  
  训练过程是完全自动的，event_handler里打印的日志类似如下所示：
-@@ -327,7 +327,7 @@ def load_image(file):
+@@ -326,8 +326,7 @@ def load_image(file):
+     return im
  
  test_data = []
- cur_dir = os.path.dirname(os.path.realpath(__file__))
+-cur_dir = os.path.dirname(os.path.realpath(__file__))
 -test_data.append((load_image(cur_dir + '/image/infer_3.png'),))
 +test_data.append((load_image('/book/02.recognize_digits/image/infer_3.png'),))
  
  probs = paddle.infer(
      output_layer=predict, parameters=parameters, input=test_data)
+diff --git paddle paddle
+--- paddle
++++ paddle
+@@ -1 +1 @@
+-Subproject commit 77e65d613d2283a9d7dc2dbce3460afa86cd5739
++Subproject commit 77e65d613d2283a9d7dc2dbce3460afa86cd5739-dirty
