@@ -70,9 +70,3 @@ index edb8072..8e2b0e3 100644
  
  probs = paddle.infer(
      output_layer=predict, parameters=parameters, input=test_data)
-diff --git paddle paddle
---- paddle
-+++ paddle
-@@ -1 +1 @@
--Subproject commit 77e65d613d2283a9d7dc2dbce3460afa86cd5739
-+Subproject commit 77e65d613d2283a9d7dc2dbce3460afa86cd5739-dirty
