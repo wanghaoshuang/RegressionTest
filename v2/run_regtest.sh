@@ -18,4 +18,4 @@ else
 fi
 
 #regression test
-docker run -i --rm -p 8888:8888 -v ${book_image}:${book_tag} /bin/bash /reg_test/demo.sh
+docker run -i --rm -p 8888:8888 -v "${cur_path}:/reg_test" ${book_image}:${book_tag} /bin/bash /reg_test/demo.sh
