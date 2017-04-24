@@ -1,8 +1,8 @@
 diff --git 01.fit_a_line/README.en.md 01.fit_a_line/README.en.md
-index ac43473..3c3df78 100644
+index b7d60ec..ac70488 100644
 --- 01.fit_a_line/README.en.md
 +++ 01.fit_a_line/README.en.md
-@@ -217,7 +217,7 @@ trainer.train(
+@@ -216,7 +216,7 @@ trainer.train(
              uci_housing.train(), buf_size=500),
          batch_size=2),
      feeding=feeding,
@@ -12,10 +12,10 @@ index ac43473..3c3df78 100644
  ```
  
 diff --git 01.fit_a_line/README.md 01.fit_a_line/README.md
-index 1b41aa4..409de5a 100644
+index 5e7f6ee..894bb59 100644
 --- 01.fit_a_line/README.md
 +++ 01.fit_a_line/README.md
-@@ -212,7 +212,7 @@ trainer.train(
+@@ -211,7 +211,7 @@ trainer.train(
              uci_housing.train(), buf_size=500),
          batch_size=2),
      feeding=feeding,
@@ -25,14 +25,16 @@ index 1b41aa4..409de5a 100644
  ```
  
 diff --git 02.recognize_digits/README.en.md 02.recognize_digits/README.en.md
-index 894d4fa..d6fff42 100644
+index 894d4fa..96dd0a8 100644
 --- 02.recognize_digits/README.en.md
 +++ 02.recognize_digits/README.en.md
-@@ -289,7 +289,7 @@ trainer.train(
+@@ -288,8 +288,8 @@ trainer.train(
+         paddle.reader.shuffle(
              paddle.dataset.mnist.train(), buf_size=8192),
          batch_size=128),
-     event_handler=event_handler_plot,
+-    event_handler=event_handler_plot,
 -    num_passes=5)
++    event_handler=event_handler,
 +    num_passes=1)
  ```
  
@@ -48,14 +50,16 @@ index 894d4fa..d6fff42 100644
  probs = paddle.infer(
      output_layer=predict, parameters=parameters, input=test_data)
 diff --git 02.recognize_digits/README.md 02.recognize_digits/README.md
-index edb8072..8e2b0e3 100644
+index edb8072..5ba3b74 100644
 --- 02.recognize_digits/README.md
 +++ 02.recognize_digits/README.md
-@@ -293,7 +293,7 @@ trainer.train(
+@@ -292,8 +292,8 @@ trainer.train(
+         paddle.reader.shuffle(
              paddle.dataset.mnist.train(), buf_size=8192),
          batch_size=128),
-     event_handler=event_handler_plot,
+-    event_handler=event_handler_plot,
 -    num_passes=5)
++    event_handler=event_handler,
 +    num_passes=1)
  ```
  

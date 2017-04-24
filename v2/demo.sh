@@ -14,12 +14,12 @@ pip install pillow
 
 #01.fit_a_line
 file=/book/01.fit_a_line/README.md
-notedown ${file} --run > ${file%.*}.ipynb
+notedown ${file} --run --render > ${file%.*}.ipynb
 file=/book/01.fit_a_line/README.en.md
-notedown ${file} --run > ${file%.*}.ipynb
+notedown ${file} --run --render > ${file%.*}.ipynb
 
 #02.recognize_digits
 file=/book/02.recognize_digits/README.md
-notedown ${file}  --run --timeout=1800 > ${file%.*}.ipynb
+notedown ${file}  --run --render --timeout=1800 > ${file%.*}.ipynb
 file=/book/02.recognize_digits/README.en.md
-notedown ${file}  --run --timeout=1800 > ${file%.*}.ipynb
+notedown ${file}  --run --render --timeout=1800 > ${file%.*}.ipynb
