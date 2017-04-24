@@ -6,7 +6,7 @@ export DISABLE_PLOT=True
 apt-get install patch 
 find /usr/ -name '*paddle-*whl' | xargs pip install
 
-cd /book && patch -p0 </reg_test/test.patch
+cd /book && patch -p0 -R </reg_test/test.patch && patch -p0 </reg_test/test.patch
 
 pip install notedown
 pip install pillow
