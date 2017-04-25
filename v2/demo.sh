@@ -9,7 +9,7 @@ cd /book
 array=()
 while IFS=  read -r -d $'\0'; do
     array+=("$REPLY")
-done < <(find /reg_test/v2 -name test.patch -print0)
+done < <(find /reg_test -name test.patch -print0)
 
 for file in "${array[@]}"; do
     patch -p0<file
