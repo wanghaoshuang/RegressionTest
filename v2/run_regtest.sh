@@ -18,4 +18,4 @@ else
 fi
 
 #regression test
-docker run -i --rm -v "/Users/liaogang/Google Drive/github/book:/book" -v "${cur_path}:/reg_test" ${book_image}:${book_tag} /bin/bash -c "/bin/bash /reg_test/demo.sh $1"
+docker run -i --rm -v "${cur_path}:/reg_test" ${book_image}:${book_tag} /bin/bash -c "/bin/bash /reg_test/demo.sh $1"
