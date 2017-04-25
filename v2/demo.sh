@@ -3,29 +3,29 @@ set -xe
 
 export DISABLE_PLOT=True
 
-apt-get install patch 
-find /usr/ -name '*paddle-*whl' | xargs pip install
-
 cd /book
+
 patch -p0 </reg_test/test.patch
 
-pip install notedown
-pip install pillow
+
+/bin/bash /book/.tools/convert-markdown-into-ipynb-and-test.sh
 
 function reg_test() {
   for i in $@; do
-    notedown --match=python $i > ${i%.*}.ipynb
-    jupyter nbconvert --to python ${i%.*}.ipynb --stdout | python
+    jupyter nbconvert --to python i --stdout | python
   done
 }
 
 if [ "$1" ]; then
   if [ "1" = "$1" ]; then
     #01.fit_a_line
-    reg_test /book/01.fit_a_line/README.md /book/01.fit_a_line/README.en.md
+    reg_test /book/01.fit_a_line/README.ipynb /book/01.fit_a_line/README.en.ipynb
   elif [ "2" = "$1" ]; then
     #02.recognize_digits
-    reg_test /book/02.recognize_digits/README.md /book/02.recognize_digits/README.en.md
+    reg_test /book/02.recognize_digits/README.ipynb /book/02.recognize_digits/README.en.ipynb
+  elif [ "3" = "$1" ]; then
+    #03.image_classification
+    reg_test /book/03.image_classification/README.ipynb /book/03.image_classification/README.en.ipynb
   else
     echo "Not implemented!"
   fi
