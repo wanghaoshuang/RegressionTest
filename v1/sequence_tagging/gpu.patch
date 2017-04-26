@@ -1,5 +1,5 @@
 diff --git demo/sequence_tagging/train.sh demo/sequence_tagging/train.sh
-index 37e196c8..29cf7f0d 100755
+index 3ebac0ef..72780555 100755
 --- demo/sequence_tagging/train.sh
 +++ demo/sequence_tagging/train.sh
 @@ -3,7 +3,7 @@
@@ -8,6 +8,6 @@ index 37e196c8..29cf7f0d 100755
         --parallel_nn=1 \
 -       --use_gpu=0 \
 +       --use_gpu=1 \
-        --dot_period=10 \
+        --dot_period=1 \
         --log_period=1000 \
         --test_period=0 \

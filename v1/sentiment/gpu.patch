@@ -1,5 +1,5 @@
 diff --git demo/sentiment/train.sh demo/sentiment/train.sh
-index 14620f73..44ca5519 100755
+index ae33a001..66415cc6 100755
 --- demo/sentiment/train.sh
 +++ demo/sentiment/train.sh
 @@ -19,7 +19,7 @@ output=./model_output
@@ -9,5 +9,5 @@ index 14620f73..44ca5519 100755
 -             --use_gpu=false \
 +             --use_gpu=1 \
               --trainer_count=4 \
-              --num_passes=10 \
+              --num_passes=2 \
               --log_period=10 \

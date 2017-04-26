@@ -1,5 +1,5 @@
 diff --git demo/recommendation/run.sh demo/recommendation/run.sh
-index 22aef556..c2bcd379 100755
+index b908076b..9acfdaa8 100755
 --- demo/recommendation/run.sh
 +++ demo/recommendation/run.sh
 @@ -16,7 +16,7 @@ set -e

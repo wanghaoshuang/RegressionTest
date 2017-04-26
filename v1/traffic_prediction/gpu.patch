@@ -1,11 +1,11 @@
 diff --git demo/traffic_prediction/train.sh demo/traffic_prediction/train.sh
-index 48dfc560..1af55f3c 100755
+index 1d371ce5..5881f8d9 100755
 --- demo/traffic_prediction/train.sh
 +++ demo/traffic_prediction/train.sh
 @@ -22,6 +22,6 @@ paddle train \
    --log_period=1000 \
-   --dot_period=10 \
-   --num_passes=10 \
+   --dot_period=1 \
+   --num_passes=4 \
 -  --use_gpu=false \
 +  --use_gpu=1 \
    --show_parameter_stats_period=3000 \
