@@ -1,0 +1,13 @@
+diff --git demo/quick_start/train.sh demo/quick_start/train.sh
+index 01697fed..c67e7b88 100755
+--- demo/quick_start/train.sh
++++ demo/quick_start/train.sh
+@@ -27,7 +27,7 @@ paddle train \
+   --trainer_count=4 \
+   --log_period=100 \
+   --num_passes=15 \
+-  --use_gpu=false \
++  --use_gpu=1 \
+   --show_parameter_stats_period=100 \
+   --test_all_data_in_one_period=1 \
+   2>&1 | tee 'train.log'
