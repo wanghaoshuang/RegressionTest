@@ -1,0 +1,44 @@
+diff --git 04.word2vec/README.en.md 04.word2vec/README.en.md
+index f9afc34..db736de 100644
+--- 04.word2vec/README.en.md
++++ 04.word2vec/README.en.md
+@@ -243,7 +243,7 @@ def wordemb(inlayer):
+ - Define name and type for input to data layer.
+ 
+ ```python
+-paddle.init(use_gpu=False, trainer_count=3)
++paddle.init(use_gpu=True, trainer_count=3)
+ word_dict = paddle.dataset.imikolov.build_dict()
+ dict_size = len(word_dict)
+ # Every layer takes integer value of range [0, dict_size)
+@@ -331,7 +331,7 @@ def event_handler(event):
+ 
+ trainer.train(
+     paddle.batch(paddle.dataset.imikolov.train(word_dict, N), 32),
+-    num_passes=100,
++    num_passes=1,
+     event_handler=event_handler)
+ ```
+ 
+diff --git 04.word2vec/README.md 04.word2vec/README.md
+index a8e3864..3c4c8d7 100644
+--- 04.word2vec/README.md
++++ 04.word2vec/README.md
+@@ -228,7 +228,7 @@ def wordemb(inlayer):
+ - 定义输入层接受的数据类型以及名字。
+ 
+ ```python
+-paddle.init(use_gpu=False, trainer_count=3) # 初始化PaddlePaddle
++paddle.init(use_gpu=True, trainer_count=3) # 初始化PaddlePaddle
+ word_dict = paddle.dataset.imikolov.build_dict()
+ dict_size = len(word_dict)
+ # 每个输入层都接受整形数据，这些数据的范围是[0, dict_size)
+@@ -320,7 +320,7 @@ def event_handler(event):
+ 
+ trainer.train(
+     paddle.batch(paddle.dataset.imikolov.train(word_dict, N), 32),
+-    num_passes=100,
++    num_passes=1,
+     event_handler=event_handler)
+ ```
+ 
