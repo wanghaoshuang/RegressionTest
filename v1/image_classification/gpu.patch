@@ -1,0 +1,13 @@
+diff --git demo/image_classification/train.sh demo/image_classification/train.sh
+index 2f459ee..ce246ac 100755
+--- demo/image_classification/train.sh
++++ demo/image_classification/train.sh
+@@ -22,7 +22,7 @@ paddle train \
+ --dot_period=1 \
+ --log_period=100 \
+ --test_all_data_in_one_period=1 \
+---use_gpu=0 \
++--use_gpu=1 \
+ --trainer_count=1 \
+ --num_passes=4 \
+ --save_dir=$output \
