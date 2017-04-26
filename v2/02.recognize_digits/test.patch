@@ -1,29 +1,3 @@
-diff --git 01.fit_a_line/README.en.md 01.fit_a_line/README.en.md
-index b7d60ec..ac70488 100644
---- 01.fit_a_line/README.en.md
-+++ 01.fit_a_line/README.en.md
-@@ -216,7 +216,7 @@ trainer.train(
-             uci_housing.train(), buf_size=500),
-         batch_size=2),
-     feeding=feeding,
--    event_handler=event_handler_plot,
-+    event_handler=event_handler,
-     num_passes=30)
- ```
- 
-diff --git 01.fit_a_line/README.md 01.fit_a_line/README.md
-index 5e7f6ee..894bb59 100644
---- 01.fit_a_line/README.md
-+++ 01.fit_a_line/README.md
-@@ -211,7 +211,7 @@ trainer.train(
-             uci_housing.train(), buf_size=500),
-         batch_size=2),
-     feeding=feeding,
--    event_handler=event_handler_plot,
-+    event_handler=event_handler,
-     num_passes=30)
- ```
- 
 diff --git 02.recognize_digits/README.en.md 02.recognize_digits/README.en.md
 index 894d4fa..96dd0a8 100644
 --- 02.recognize_digits/README.en.md

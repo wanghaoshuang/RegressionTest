@@ -1,32 +1,29 @@
 #!/bin/bash
 set -xe
 
+#disable python plot figures
 export DISABLE_PLOT=True
 
-apt-get install patch 
-find /usr/ -name '*paddle-*whl' | xargs pip install
-
 cd /book
-patch -p0 </reg_test/test.patch
-
-pip install notedown
-pip install pillow
 
 function reg_test() {
   for i in $@; do
-    notedown --match=python $i > ${i%.*}.ipynb
+    # patch demo No.i
+    demo_dir=$(dirname $i)
+    # patching demo
+    patch -p0 < /reg_test/$demo_dir*/test.patch
+    # convert markdown to ipynb
+    bash /book/.tools/convert-markdown-into-ipynb-and-test.sh
+    # execute ipython notebook
     jupyter nbconvert --to python ${i%.*}.ipynb --stdout | python
+    # unpatching demo
+    patch -p0 -R < /reg_test/$demo_dir*/test.patch
   done
 }
 
 if [ "$1" ]; then
-  if [ "1" = "$1" ]; then
-    #01.fit_a_line
-    reg_test /book/01.fit_a_line/README.md /book/01.fit_a_line/README.en.md
-  elif [ "2" = "$1" ]; then
-    #02.recognize_digits
-    reg_test /book/02.recognize_digits/README.md /book/02.recognize_digits/README.en.md
-  else
-    echo "Not implemented!"
+  mds=$(find 0$1* -name "README*md" | xargs)
+  if [ "$mds" ]; then
+    reg_test $mds
   fi
 fi
