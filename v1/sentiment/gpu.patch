@@ -1,13 +1,15 @@
 diff --git demo/sentiment/train.sh demo/sentiment/train.sh
-index ae33a001..66415cc6 100755
+index ae33a001..dfb5cb69 100755
 --- demo/sentiment/train.sh
 +++ demo/sentiment/train.sh
-@@ -19,7 +19,7 @@ output=./model_output
+@@ -19,8 +19,8 @@ output=./model_output
  paddle train --config=$config \
               --save_dir=$output \
               --job=train \
 -             --use_gpu=false \
+-             --trainer_count=4 \
 +             --use_gpu=1 \
-              --trainer_count=4 \
++             --trainer_count=1 \
               --num_passes=2 \
               --log_period=10 \
+              --dot_period=20 \
