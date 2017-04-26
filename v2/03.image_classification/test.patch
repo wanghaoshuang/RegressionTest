@@ -1,5 +1,5 @@
 diff --git 03.image_classification/README.en.md 03.image_classification/README.en.md
-index 93391af..0ebb276 100644
+index 93391af..3b8c495 100644
 --- 03.image_classification/README.en.md
 +++ 03.image_classification/README.en.md
 @@ -383,8 +383,8 @@ where $n$ is the number of processed samples, $lr_{0}$ is the learning_rate.
@@ -39,12 +39,12 @@ index 93391af..0ebb276 100644
  test_data = []
 -cur_dir = os.path.dirname(os.path.realpath(__file__))
 -test_data.append((load_image(cur_dir + '/image/dog.png'),)
-+test_data.append((load_image('/book/03.image_classification/image/dog.png'),)
++test_data.append(load_image('/book/03.image_classification/image/dog.png'))
  
  probs = paddle.infer(
      output_layer=out, parameters=parameters, input=test_data)
 diff --git 03.image_classification/README.md 03.image_classification/README.md
-index 96891b1..e3c71e1 100644
+index 96891b1..21797f8 100644
 --- 03.image_classification/README.md
 +++ 03.image_classification/README.md
 @@ -376,8 +376,8 @@ cifar.train10()每次产生一条样本，在完成shuffle和batch之后，作
@@ -84,7 +84,7 @@ index 96891b1..e3c71e1 100644
  test_data = []
 -cur_dir = os.path.dirname(os.path.realpath(__file__))
 -test_data.append((load_image(cur_dir + '/image/dog.png'),)
-+test_data.append((load_image('/book/03.image_classification/image/dog.png'),)
++test_data.append(load_image('/book/03.image_classification/image/dog.png'))
  
  probs = paddle.infer(
      output_layer=out, parameters=parameters, input=test_data)
