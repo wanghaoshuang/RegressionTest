@@ -10,12 +10,14 @@ function reg_test() {
   for i in $@; do
     # patch demo No.i
     demo_dir=$(dirname $i)
-    # find "$(dirname $i)" -name test.patch | xargs patch -p0
+    # patching demo
     patch -p0 < /reg_test/$demo_dir*/test.patch
     # convert markdown to ipynb
     bash /book/.tools/convert-markdown-into-ipynb-and-test.sh
     # execute ipython notebook
     jupyter nbconvert --to python ${i%.*}.ipynb --stdout | python
+    # unpatching demo
+    patch -p0 -R < /reg_test/$demo_dir*/test.patch
   done
 }
 
