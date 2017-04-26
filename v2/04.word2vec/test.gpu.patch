@@ -1,5 +1,5 @@
 diff --git 04.word2vec/README.en.md 04.word2vec/README.en.md
-index f9afc34..db736de 100644
+index f9afc34..741b00a 100644
 --- 04.word2vec/README.en.md
 +++ 04.word2vec/README.en.md
 @@ -243,7 +243,7 @@ def wordemb(inlayer):
@@ -7,7 +7,7 @@ index f9afc34..db736de 100644
  
  ```python
 -paddle.init(use_gpu=False, trainer_count=3)
-+paddle.init(use_gpu=True, trainer_count=3)
++paddle.init(use_gpu=True, trainer_count=1)
  word_dict = paddle.dataset.imikolov.build_dict()
  dict_size = len(word_dict)
  # Every layer takes integer value of range [0, dict_size)
@@ -21,7 +21,7 @@ index f9afc34..db736de 100644
  ```
  
 diff --git 04.word2vec/README.md 04.word2vec/README.md
-index a8e3864..3c4c8d7 100644
+index a8e3864..d05bfb5 100644
 --- 04.word2vec/README.md
 +++ 04.word2vec/README.md
 @@ -228,7 +228,7 @@ def wordemb(inlayer):
@@ -29,7 +29,7 @@ index a8e3864..3c4c8d7 100644
  
  ```python
 -paddle.init(use_gpu=False, trainer_count=3) # 初始化PaddlePaddle
-+paddle.init(use_gpu=True, trainer_count=3) # 初始化PaddlePaddle
++paddle.init(use_gpu=True, trainer_count=1) # 初始化PaddlePaddle
  word_dict = paddle.dataset.imikolov.build_dict()
  dict_size = len(word_dict)
  # 每个输入层都接受整形数据，这些数据的范围是[0, dict_size)
