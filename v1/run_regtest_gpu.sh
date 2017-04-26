@@ -40,6 +40,7 @@ COPY run.sh /
 COPY test.patch /
 COPY gpu.patch /
 RUN cd /Paddle && patch -p0 </test.patch && patch -p0 </gpu.patch
+ENV CUDA_VISIBLE_DEVICES 3
 CMD /run.sh
 EOF
 

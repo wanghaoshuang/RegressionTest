@@ -1,9 +1,13 @@
 diff --git demo/quick_start/train.sh demo/quick_start/train.sh
-index e34af604..f326cea6 100755
+index e34af604..6f2b8681 100755
 --- demo/quick_start/train.sh
 +++ demo/quick_start/train.sh
-@@ -27,7 +27,7 @@ paddle train \
-   --trainer_count=4 \
+@@ -24,10 +24,10 @@ cfg=trainer_config.lr.py
+ paddle train \
+   --config=$cfg \
+   --save_dir=./output \
+-  --trainer_count=4 \
++  --trainer_count=1 \
    --log_period=100 \
    --num_passes=1 \
 -  --use_gpu=false \
