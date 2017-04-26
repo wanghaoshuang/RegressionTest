@@ -7,14 +7,18 @@ Any time you modify an implementation within PaddlePaddle Book, regression testi
 triggered automatically.
 
 ```bash
-/bin/bash ./v2/run_regtest.sh 1 book_image_name book_image_tag
+demo_num=1 # demo no.1
+use_gpu=1  # use gpu
+/bin/bash ./v2/run_regtest.sh ${demo_num} ${use_gpu} book_image_name book_image_tag
 ```
 
-> `1` denotes regression testing for `01.fit_a_line`.
+> `demo_num=1` denotes regression test for `01.fit_a_line`.
 
-> `book_image_name` is a docker image name of PaddlePaddle Book.
+> `use_gpu=1` denotes regression test on PaddlePaddle Book with GPU`
 
-> `book_image_tag` is an image tag of that.
+> `book_image_name` is a docker image name of PaddlePaddle Book. [default: paddlepaddle/book]
+
+> `book_image_tag` is an image tag of that. [default: latest]
 
 
 ## [PaddlePaddle DashBoard](http://yq01-idl-gpu-jpaas-let01.yq01.baidu.com:8111/overview.html)
