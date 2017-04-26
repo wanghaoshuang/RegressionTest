@@ -38,7 +38,8 @@ RUN cd / && git clone https://github.com/PaddlePaddle/Paddle.git && \
     cd Paddle && git checkout release/0.10.0
 COPY run.sh /
 COPY test.patch /
-RUN cd /Paddle && patch -p0 </test.patch
+COPY gpu.patch /
+RUN cd /Paddle && patch -p0 </test.patch && patch -p0 </gpu.patch
 CMD /run.sh
 EOF
 
@@ -52,5 +53,5 @@ fi
 
 cd ${DIRNAME}
 docker build -t ${IMG_NAME} .
-docker run ${TERM_OPT} --rm ${IMG_NAME}
+nvidia-docker run ${TERM_OPT} --rm ${IMG_NAME}
 docker rmi ${IMG_NAME}

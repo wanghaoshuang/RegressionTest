@@ -1,0 +1,13 @@
+diff --git demo/mnist/train.sh demo/mnist/train.sh
+index 2bdff74..d182b85 100755
+--- demo/mnist/train.sh
++++ demo/mnist/train.sh
+@@ -22,7 +22,7 @@ paddle train \
+ --dot_period=1 \
+ --log_period=100 \
+ --test_all_data_in_one_period=1 \
+---use_gpu=0 \
++--use_gpu=1 \
+ --trainer_count=1 \
+ --num_passes=4 \
+ --save_dir=$output \
