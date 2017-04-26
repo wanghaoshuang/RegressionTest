@@ -19,13 +19,13 @@ triggered automatically.
 
 ## [PaddlePaddle DashBoard](http://yq01-idl-gpu-jpaas-let01.yq01.baidu.com:8111/overview.html)
 
-| Regression Test          |  Status              |
-| ------------------------ |:--------------------:|
-| 01.fit_a_line            | CPU: **pass**        |
-| 02.recognize_digits      | CPU: **pass**        |
-| 03.image_classification  | CPU: **pass**        |
-| 04.word2vec              | CPU: **pass**        |
-| 05.understand_sentiment  | |
-| 06.label_semantic_roles  | |
-| 07.machine_translation   | |
-| 08.recommender_system    | |
+| Regression Test          |  Status                           |
+| ------------------------ |:---------------------------------:|
+| 01.fit_a_line            | CPU: **pass** GPU: **pass**       |
+| 02.recognize_digits      | CPU: **pass** GPU: **pass**       |
+| 03.image_classification  | CPU: **pass** GPU: **pass**       |
+| 04.word2vec              | CPU: **pass** GPU: **pass**       |
+| 05.understand_sentiment  | CPU: **pass** GPU: **pass**       |
+| 06.label_semantic_roles  | CPU: **pass** GPU: **not support**       |
+| 07.machine_translation   | CPU: **pass** GPU: **pass**       |
+| 08.recommender_system    | CPU: **pass** GPU: **pass**       |

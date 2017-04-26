@@ -22,7 +22,7 @@ if [ "$mds" ]; then
   for i in $mds; do
     demo_dir=$(dirname $i)
     export PYTHONPATH=/book/$demo_dir:$PYTHONPATH
-    if [ "0" == "$2"]; then
+    if [ "0" == "$2" ]; then
       patch=/reg_test/$demo_dir/test.patch
     else
       patch=/reg_test/$demo_dir/test.gpu.patch
