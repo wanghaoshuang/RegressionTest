@@ -24,6 +24,7 @@ triggered automatically.
 | 01.fit_a_line            | CPU: **pass**        |
 | 02.recognize_digits      | CPU: **pass**        |
 | 03.image_classification  | CPU: **pass**        |
+| 04.word2vec              |                      |
 | 05.understand_sentiment  | |
 | 06.label_semantic_roles  | |
 | 07.machine_translation   | |
