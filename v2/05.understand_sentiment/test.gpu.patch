@@ -1,0 +1,35 @@
+diff --git 05.understand_sentiment/README.en.md 05.understand_sentiment/README.en.md
+index 4e3a6f9..282fb79 100644
+--- 05.understand_sentiment/README.en.md
++++ 05.understand_sentiment/README.en.md
+@@ -133,7 +133,7 @@ import sys
+ import paddle.v2 as paddle
+ 
+ # PaddlePaddle init
+-paddle.init(use_gpu=False, trainer_count=1)
++paddle.init(use_gpu=True, trainer_count=1)
+ ```
+ 
+ As alluded to in section [Model Overview](#model-overview), here we provide the implementations of both Text CNN and Stacked-bidirectional LSTM models.
+@@ -344,7 +344,7 @@ trainer.train(
+     reader=train_reader,
+     event_handler=event_handler,
+     feeding=feeding,
+-    num_passes=10)
++    num_passes=2)
+ ```
+ 
+ 
+diff --git 05.understand_sentiment/README.md 05.understand_sentiment/README.md
+index 1d67635..16dfbb9 100644
+--- 05.understand_sentiment/README.md
++++ 05.understand_sentiment/README.md
+@@ -242,7 +242,7 @@ def stacked_lstm_net(input_dim,
+ ```python
+ if __name__ == '__main__':
+     # init
+-    paddle.init(use_gpu=False)
++    paddle.init(use_gpu=True)
+ ```
+ 启动paddle程序，use_gpu=False表示用CPU训练，如果系统支持GPU也可以修改成True使用GPU训练。
+ 

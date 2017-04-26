@@ -1,0 +1,44 @@
+diff --git 08.recommender_system/README.en.md 08.recommender_system/README.en.md
+index a1ba563..f5ca48f 100644
+--- 08.recommender_system/README.en.md
++++ 08.recommender_system/README.en.md
+@@ -178,7 +178,7 @@ from IPython import display
+ import cPickle
+ 
+ import paddle.v2 as paddle
+-paddle.init(use_gpu=False)
++paddle.init(use_gpu=True)
+ ```
+ 
+ ### Model Configuration
+@@ -362,7 +362,7 @@ Finally, we can invoke `trainer.train` to start training:
+ ```python
+ trainer.train(
+     reader=reader,
+-    event_handler=event_handler_plot,
++    event_handler=event_handler,
+     feeding=feeding,
+     num_passes=2)
+ ```
+diff --git 08.recommender_system/README.md 08.recommender_system/README.md
+index 69ba879..fc36120 100644
+--- 08.recommender_system/README.md
++++ 08.recommender_system/README.md
+@@ -96,7 +96,7 @@ Paddle在API中提供了自动加载数据的模块。数据模块为 `paddle.da
+ 
+ ```python
+ import paddle.v2 as paddle
+-paddle.init(use_gpu=False)
++paddle.init(use_gpu=True)
+ ```
+ 
+ 
+@@ -390,7 +390,7 @@ trainer.train(
+             paddle.reader.shuffle(
+             paddle.dataset.movielens.train(), buf_size=8192),
+                             batch_size=256),
+-    event_handler=event_handler_plot,
++    event_handler=event_handler,
+     feeding=feeding,
+     num_passes=2)
+ ```
