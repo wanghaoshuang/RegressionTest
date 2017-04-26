@@ -1,7 +1,7 @@
 #!/bin/bash
 set -xe
 
-if [ -z $1 || -z $2 ]; then
+if [ -z "$1" ] || [ -z "$2" ]; then
     echo "Usage: bash run_regtest.sh <demo:[1-8]> <use gpu:[0/1] <book_image:option> <book_tag:option>"
     exit
 fi
