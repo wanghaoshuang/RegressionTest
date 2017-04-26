@@ -26,7 +26,7 @@ fi
 #regression test
 cur_path="$(cd "$(dirname "$0")" && pwd -P)"
 
-if [ "0" = ${use_gpu}]; then
+if [ "0" = ${use_gpu} ]; then
   docker run -i --rm -v "${cur_path}:/reg_test" ${book_image}:${book_tag} /bin/bash -c "/bin/bash /reg_test/demo.sh ${demo_num} ${use_gpu}"
 else
   nvidia-docker run -i --rm -v "${cur_path}:/reg_test" ${book_image}:${book_tag} /bin/bash -c "/bin/bash /reg_test/demo.sh ${demo_num} ${use_gpu}"
