@@ -1,0 +1,120 @@
+diff --git 07.machine_translation/README.en.md 07.machine_translation/README.en.md
+index 951cd1e..95bb4b3 100644
+--- 07.machine_translation/README.en.md
++++ 07.machine_translation/README.en.md
+@@ -230,6 +230,7 @@ is_generating = False
+    decoder_size = 512 # hidden layer size of GRU in decoder
+    beam_size = 3 # expand width in beam search
+    max_length = 250 # a stop condition of sequence generation
++   error_clipping = 50
+   ```
+ 
+ 2. Implement Encoder as follows:
+@@ -254,9 +255,18 @@ is_generating = False
+ 
+    ```python
+     src_forward = paddle.networks.simple_gru(
+-        input=src_embedding, size=encoder_size)
++        input=src_embedding,
++        size=encoder_size,
++        naive=True,
++        gru_layer_attr=ExtraLayerAttribute(
++            error_clipping_threshold=error_clipping))
+     src_backward = paddle.networks.simple_gru(
+-        input=src_embedding, size=encoder_size, reverse=True)
++        input=src_embedding,
++        size=encoder_size,
++        reverse=True,
++        naive=True,
++        gru_layer_attr=ExtraLayerAttribute(
++            error_clipping_threshold=error_clipping)))
+     encoded_vector = paddle.layer.concat(input=[src_forward, src_backward])
+    ```
+ 
+@@ -304,11 +314,13 @@ is_generating = False
+             decoder_inputs += paddle.layer.full_matrix_projection(
+                 input=current_word)
+ 
+-        gru_step = paddle.layer.gru_step(
++        gru_step = paddle.layer.gru_step_naive(
+             name='gru_decoder',
+             input=decoder_inputs,
+             output_mem=decoder_mem,
+-            size=decoder_size)
++            size=decoder_size
++            layer_attr=ExtraLayerAttribute(
++                error_clipping_threshold=error_clipping))
+ 
+         with paddle.layer.mixed(
+                 size=target_dict_dim,
+@@ -414,8 +426,8 @@ Note: Our configuration is based on Bahdanau et al. \[[4](#Reference)\] but with
+     ```python
+     if not is_generating:
+         wmt14_reader = paddle.batch(
+-            paddle.reader.shuffle(
+-                paddle.dataset.wmt14.train(dict_size=dict_size), buf_size=8192),
++            paddle.reader.firstn(paddle.reader.shuffle(
++                paddle.dataset.wmt14.train(dict_size=dict_size), buf_size=8192), 1000),
+             batch_size=5)
+     ```
+ 3. Create trainer
+diff --git 07.machine_translation/README.md 07.machine_translation/README.md
+index 58f613b..816e9a2 100644
+--- 07.machine_translation/README.md
++++ 07.machine_translation/README.md
+@@ -194,6 +194,7 @@ is_generating = False
+    decoder_size = 512 # 解码器中的GRU隐层大小
+    beam_size = 3 # 柱宽度
+    max_length = 250 # 生成句子的最大长度
++   error_clipping = 50
+   ```
+ 
+ 2. 其次，实现编码器框架。分为三步：
+@@ -217,9 +218,18 @@ is_generating = False
+ 
+    ```python
+     src_forward = paddle.networks.simple_gru(
+-        input=src_embedding, size=encoder_size)
++        input=src_embedding,
++        size=encoder_size,
++        naive=True,
++        gru_layer_attr=ExtraLayerAttribute(
++            error_clipping_threshold=error_clipping))
+     src_backward = paddle.networks.simple_gru(
+-        input=src_embedding, size=encoder_size, reverse=True)
++        input=src_embedding,
++        size=encoder_size,
++        reverse=True,
++        naive=True,
++        gru_layer_attr=ExtraLayerAttribute(
++            error_clipping_threshold=error_clipping))
+     encoded_vector = paddle.layer.concat(input=[src_forward, src_backward])
+    ```
+ 
+@@ -266,11 +276,13 @@ is_generating = False
+             decoder_inputs += paddle.layer.full_matrix_projection(
+                 input=current_word)
+ 
+-        gru_step = paddle.layer.gru_step(
++        gru_step = paddle.layer.gru_step_naive(
+             name='gru_decoder',
+             input=decoder_inputs,
+             output_mem=decoder_mem,
+-            size=decoder_size)
++            size=decoder_size,
++            layer_attr=ExtraLayerAttribute(
++                error_clipping_threshold=error_clipping))
+ 
+         with paddle.layer.mixed(
+                 size=target_dict_dim,
+@@ -376,8 +388,8 @@ is_generating = False
+     ```python
+     if not is_generating:
+         wmt14_reader = paddle.batch(
+-            paddle.reader.shuffle(
+-                paddle.dataset.wmt14.train(dict_size=dict_size), buf_size=8192),
++            paddle.reader.firstn(paddle.reader.shuffle(
++                paddle.dataset.wmt14.train(dict_size=dict_size), buf_size=8192), 1000),
+             batch_size=5)
+     ```
+ 
