@@ -1,0 +1,90 @@
+diff --git 03.image_classification/README.en.md 03.image_classification/README.en.md
+index 93391af..0ebb276 100644
+--- 03.image_classification/README.en.md
++++ 03.image_classification/README.en.md
+@@ -383,8 +383,8 @@ where $n$ is the number of processed samples, $lr_{0}$ is the learning_rate.
+ 
+ ```python
+ reader=paddle.batch(
+-    paddle.reader.shuffle(
+-        paddle.dataset.cifar.train10(), buf_size=50000),
++    paddle.reader.firstn(paddle.reader.shuffle(
++        paddle.dataset.cifar.train10(), buf_size=50000), 12800),
+         batch_size=128)
+ ```
+ 
+@@ -444,7 +444,7 @@ def event_handler(event):
+ 
+         result = trainer.test(
+             reader=paddle.batch(
+-                paddle.dataset.cifar.test10(), batch_size=128),
++                paddle.reader.firstn(paddle.dataset.cifar.test10(), 128), batch_size=128),
+             feeding=feeding)
+         print "\nTest with Pass %d, %s" % (event.pass_id, result.metrics)
+ ```
+@@ -454,8 +454,8 @@ Finally, we can invoke `trainer.train` to start training:
+ ```python
+ trainer.train(
+     reader=reader,
+-    num_passes=200,
+-    event_handler=event_handler_plot,
++    num_passes=1,
++    event_handler=event_handler,
+     feeding=feeding)
+ ```
+ 
+@@ -496,8 +496,7 @@ def load_image(file):
+     im = im / 255.0
+     return im
+ test_data = []
+-cur_dir = os.path.dirname(os.path.realpath(__file__))
+-test_data.append((load_image(cur_dir + '/image/dog.png'),)
++test_data.append((load_image('/book/03.image_classification/image/dog.png'),)
+ 
+ probs = paddle.infer(
+     output_layer=out, parameters=parameters, input=test_data)
+diff --git 03.image_classification/README.md 03.image_classification/README.md
+index 96891b1..e3c71e1 100644
+--- 03.image_classification/README.md
++++ 03.image_classification/README.md
+@@ -376,8 +376,8 @@ cifar.train10()每次产生一条样本，在完成shuffle和batch之后，作
+ 
+ ```python
+ reader=paddle.batch(
+-    paddle.reader.shuffle(
+-        paddle.dataset.cifar.train10(), buf_size=50000),
++    paddle.reader.firstn(paddle.reader.shuffle(
++        paddle.dataset.cifar.train10(), buf_size=50000), 12800),
+         batch_size=128)
+ ```
+ 
+@@ -437,7 +437,7 @@ def event_handler(event):
+ 
+         result = trainer.test(
+             reader=paddle.batch(
+-                paddle.dataset.cifar.test10(), batch_size=128),
++                paddle.reader.firstn(paddle.dataset.cifar.test10(), 128), batch_size=128),
+             feeding=feeding)
+         print "\nTest with Pass %d, %s" % (event.pass_id, result.metrics)
+ ```
+@@ -447,8 +447,8 @@ def event_handler(event):
+ ```python
+ trainer.train(
+     reader=reader,
+-    num_passes=200,
+-    event_handler=event_handler_plot,
++    num_passes=1,
++    event_handler=event_handler,
+     feeding=feeding)
+ ```
+ 
+@@ -488,8 +488,7 @@ def load_image(file):
+     im = im / 255.0
+     return im
+ test_data = []
+-cur_dir = os.path.dirname(os.path.realpath(__file__))
+-test_data.append((load_image(cur_dir + '/image/dog.png'),)
++test_data.append((load_image('/book/03.image_classification/image/dog.png'),)
+ 
+ probs = paddle.infer(
+     output_layer=out, parameters=parameters, input=test_data)
