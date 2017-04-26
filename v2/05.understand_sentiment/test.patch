@@ -1,0 +1,13 @@
+diff --git 05.understand_sentiment/README.en.md 05.understand_sentiment/README.en.md
+index 4e3a6f9..194256e 100644
+--- 05.understand_sentiment/README.en.md
++++ 05.understand_sentiment/README.en.md
+@@ -344,7 +344,7 @@ trainer.train(
+     reader=train_reader,
+     event_handler=event_handler,
+     feeding=feeding,
+-    num_passes=10)
++    num_passes=2)
+ ```
+ 
+ 

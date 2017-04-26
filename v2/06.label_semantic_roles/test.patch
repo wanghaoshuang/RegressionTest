@@ -1,0 +1,26 @@
+diff --git 06.label_semantic_roles/README.en.md 06.label_semantic_roles/README.en.md
+index 7531ade..268f24c 100644
+--- 06.label_semantic_roles/README.en.md
++++ 06.label_semantic_roles/README.en.md
+@@ -479,7 +479,7 @@ def event_handler(event):
+ trainer.train(
+     reader=reader,
+     event_handler=event_handler,
+-    num_passes=10000,
++    num_passes=2,
+     feeding=feeding)
+ ```
+ 
+diff --git 06.label_semantic_roles/README.md 06.label_semantic_roles/README.md
+index 5343c3a..1b2249d 100644
+--- 06.label_semantic_roles/README.md
++++ 06.label_semantic_roles/README.md
+@@ -461,7 +461,7 @@ def event_handler(event):
+ trainer.train(
+     reader=reader,
+     event_handler=event_handler,
+-    num_passes=1,
++    num_passes=2,
+     feeding=feeding)
+ ```
+ 
