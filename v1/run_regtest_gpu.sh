@@ -53,7 +53,5 @@ fi
 
 cd ${DIRNAME}
 docker build -t ${IMG_NAME} .
-export CUDA_SO="$(\ls /usr/lib64/libcuda* | xargs -I{} echo '-v {}:{}') $(\ls /usr/lib64/libnvidia* | xargs -I{} echo '-v {}:{}')"
-export DEVICES=$(\ls /dev/nvidia* | xargs -I{} echo '--device {}:{}')
-docker run ${CUDA_SO} ${DEVICES} ${TERM_OPT} --rm ${IMG_NAME}
+nvidia-docker run ${TERM_OPT} --rm ${IMG_NAME}
 docker rmi ${IMG_NAME}
