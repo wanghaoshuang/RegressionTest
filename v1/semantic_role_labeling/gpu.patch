@@ -1,0 +1,13 @@
+diff --git demo/semantic_role_labeling/train.sh demo/semantic_role_labeling/train.sh
+index eee14010..a6aa7072 100755
+--- demo/semantic_role_labeling/train.sh
++++ demo/semantic_role_labeling/train.sh
+@@ -16,7 +16,7 @@
+ set -e
+ paddle train \
+   --config=./db_lstm.py \
+-  --use_gpu=0 \
++  --use_gpu=1 \
+   --log_period=5000 \
+   --trainer_count=1 \
+   --show_parameter_stats_period=5000 \
