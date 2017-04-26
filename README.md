@@ -26,6 +26,6 @@ triggered automatically.
 | 03.image_classification  | CPU: **pass** GPU: **pass**       |
 | 04.word2vec              | CPU: **pass** GPU: **pass**       |
 | 05.understand_sentiment  | CPU: **pass** GPU: **pass**       |
-| 06.label_semantic_roles  | CPU: **pass** GPU: **not support**       |
+| 06.label_semantic_roles  | CPU: **pass** GPU: **????**       |
 | 07.machine_translation   | CPU: **pass** GPU: **pass**       |
 | 08.recommender_system    | CPU: **pass** GPU: **pass**       |
