@@ -17,11 +17,13 @@ triggered automatically.
 > `book_image_tag` is an image tag of that.
 
 
+[PaddlePaddle DashBoard](http://yq01-idl-gpu-jpaas-let01.yq01.baidu.com:8111/overview.html)
+
 | Regression Test          |  Status              |
 | ------------------------ |:--------------------:|
-| 01.fit_a_line            | - [x] CPU            |
-| 02.recognize_digits      | - [x] CPU            |
-| 03.image_classification  | - [x] CPU            |
+| 01.fit_a_line            | CPU: **pass**        |
+| 02.recognize_digits      | CPU: **pass**        |
+| 03.image_classification  | CPU: **pass**        |
 | 05.understand_sentiment  | |
 | 06.label_semantic_roles  | |
 | 07.machine_translation   | |
