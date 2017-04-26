@@ -1,13 +1,15 @@
 diff --git demo/recommendation/run.sh demo/recommendation/run.sh
-index b908076b..9acfdaa8 100755
+index b908076b..320b7e39 100755
 --- demo/recommendation/run.sh
 +++ demo/recommendation/run.sh
-@@ -16,7 +16,7 @@ set -e
+@@ -16,8 +16,8 @@ set -e
  paddle train \
      --config=trainer_config.py \
      --save_dir=./output \
 -    --use_gpu=false \
+-    --trainer_count=4\
 +    --use_gpu=1 \
-     --trainer_count=4\
++    --trainer_count=1\
      --test_all_data_in_one_period=true \
      --log_period=100 \
+     --dot_period=1 \
