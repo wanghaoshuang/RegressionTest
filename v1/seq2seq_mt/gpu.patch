@@ -1,8 +1,8 @@
 diff --git demo/seqToseq/translation/train.sh demo/seqToseq/translation/train.sh
-index b0ec9854..d3eb66ed 100755
+index b0ec9854..9489df98 100755
 --- demo/seqToseq/translation/train.sh
 +++ demo/seqToseq/translation/train.sh
-@@ -18,7 +18,7 @@ cd ..
+@@ -18,10 +18,10 @@ cd ..
  paddle train \
  --config='translation/train.conf' \
  --save_dir='translation/model' \
@@ -10,4 +10,8 @@ index b0ec9854..d3eb66ed 100755
 +--use_gpu=1 \
  --num_passes=16 \
  --show_parameter_stats_period=100 \
- --trainer_count=4 \
+---trainer_count=4 \
++--trainer_count=1 \
+ --log_period=10 \
+ --dot_period=5 \
+ 2>&1 | tee 'translation/train.log'
