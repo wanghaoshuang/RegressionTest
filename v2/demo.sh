@@ -1,6 +1,9 @@
 #!/bin/bash
 set -xe
 
+#disable python plot figures
+export DISABLE_PLOT=True
+
 cd /book
 
 function reg_test() {
