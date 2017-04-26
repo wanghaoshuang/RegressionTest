@@ -1,0 +1,26 @@
+diff --git 04.word2vec/README.en.md 04.word2vec/README.en.md
+index f9afc34..39db199 100644
+--- 04.word2vec/README.en.md
++++ 04.word2vec/README.en.md
+@@ -331,7 +331,7 @@ def event_handler(event):
+ 
+ trainer.train(
+     paddle.batch(paddle.dataset.imikolov.train(word_dict, N), 32),
+-    num_passes=100,
++    num_passes=1,
+     event_handler=event_handler)
+ ```
+ 
+diff --git 04.word2vec/README.md 04.word2vec/README.md
+index a8e3864..446ae98 100644
+--- 04.word2vec/README.md
++++ 04.word2vec/README.md
+@@ -320,7 +320,7 @@ def event_handler(event):
+ 
+ trainer.train(
+     paddle.batch(paddle.dataset.imikolov.train(word_dict, N), 32),
+-    num_passes=100,
++    num_passes=1,
+     event_handler=event_handler)
+ ```
+ 
