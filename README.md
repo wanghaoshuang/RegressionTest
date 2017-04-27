@@ -31,5 +31,5 @@ use_gpu=1  # use gpu
 | 04.word2vec              | CPU: **pass** GPU: **pass**       |
 | 05.understand_sentiment  | CPU: **pass** GPU: **pass**       |
 | 06.label_semantic_roles  | CPU: **pass** GPU: **????**       |
-| 07.machine_translation   | CPU: **pass** GPU: **pass**       |
+| 07.machine_translation   | CPU: **????** GPU: **????**       |
 | 08.recommender_system    | CPU: **pass** GPU: **pass**       |
