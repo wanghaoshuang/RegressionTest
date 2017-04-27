@@ -1,8 +1,8 @@
 diff --git 08.recommender_system/README.en.md 08.recommender_system/README.en.md
-index a1ba563..f44faef 100644
+index d8e513a..088cceb 100644
 --- 08.recommender_system/README.en.md
 +++ 08.recommender_system/README.en.md
-@@ -362,9 +362,9 @@ Finally, we can invoke `trainer.train` to start training:
+@@ -352,9 +352,9 @@ Finally, we can invoke `trainer.train` to start training:
  ```python
  trainer.train(
      reader=reader,
@@ -15,10 +15,10 @@ index a1ba563..f44faef 100644
  
  ## Conclusion
 diff --git 08.recommender_system/README.md 08.recommender_system/README.md
-index 69ba879..e80b723 100644
+index 73f0d61..062a784 100644
 --- 08.recommender_system/README.md
 +++ 08.recommender_system/README.md
-@@ -390,9 +390,9 @@ trainer.train(
+@@ -382,9 +382,9 @@ trainer.train(
              paddle.reader.shuffle(
              paddle.dataset.movielens.train(), buf_size=8192),
                              batch_size=256),

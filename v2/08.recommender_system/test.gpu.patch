@@ -1,17 +1,17 @@
 diff --git 08.recommender_system/README.en.md 08.recommender_system/README.en.md
-index a1ba563..f6e98b2 100644
+index d8e513a..e2feb37 100644
 --- 08.recommender_system/README.en.md
 +++ 08.recommender_system/README.en.md
-@@ -178,7 +178,7 @@ from IPython import display
- import cPickle
+@@ -172,7 +172,7 @@ First, we must import and initialize PaddlePaddle (enable/disable GPU, set the n
  
+ ```python
  import paddle.v2 as paddle
 -paddle.init(use_gpu=False)
 +paddle.init(use_gpu=True)
  ```
  
  ### Model Configuration
-@@ -362,9 +362,9 @@ Finally, we can invoke `trainer.train` to start training:
+@@ -352,9 +352,9 @@ Finally, we can invoke `trainer.train` to start training:
  ```python
  trainer.train(
      reader=reader,
@@ -24,7 +24,7 @@ index a1ba563..f6e98b2 100644
  
  ## Conclusion
 diff --git 08.recommender_system/README.md 08.recommender_system/README.md
-index 69ba879..1c218f2 100644
+index 73f0d61..fa2d6f7 100644
 --- 08.recommender_system/README.md
 +++ 08.recommender_system/README.md
 @@ -96,7 +96,7 @@ Paddle在API中提供了自动加载数据的模块。数据模块为 `paddle.da
@@ -36,7 +36,7 @@ index 69ba879..1c218f2 100644
  ```
  
  
-@@ -390,9 +390,9 @@ trainer.train(
+@@ -382,9 +382,9 @@ trainer.train(
              paddle.reader.shuffle(
              paddle.dataset.movielens.train(), buf_size=8192),
                              batch_size=256),
