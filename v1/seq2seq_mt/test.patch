@@ -1,0 +1,43 @@
+diff --git demo/seqToseq/dataprovider.py demo/seqToseq/dataprovider.py
+index c2b4980..dc2fa0b 100755
+--- demo/seqToseq/dataprovider.py
++++ demo/seqToseq/dataprovider.py
+@@ -69,6 +69,7 @@ def _get_ids(s, dictionary):
+ def process(settings, file_name):
+     with open(file_name, 'r') as f:
+         for line_count, line in enumerate(f):
++            if line_count == 1000: break
+             line_split = line.strip().split('\t')
+             if settings.job_mode and len(line_split) != 2:
+                 continue
+diff --git demo/seqToseq/translation/train.conf demo/seqToseq/translation/train.conf
+index 72b7ccd..a2d9df0 100644
+--- demo/seqToseq/translation/train.conf
++++ demo/seqToseq/translation/train.conf
+@@ -29,7 +29,7 @@ train_conf = seq_to_seq_data(data_dir = data_dir,
+ ### Algorithm Configuration
+ settings(
+     learning_method = AdamOptimizer(),
+-    batch_size = 50,
++    batch_size = 5,
+     learning_rate = 5e-4)
+ 
+ ### Network Architecture
+diff --git demo/seqToseq/translation/train.sh demo/seqToseq/translation/train.sh
+index b0ec985..76da076 100755
+--- demo/seqToseq/translation/train.sh
++++ demo/seqToseq/translation/train.sh
+@@ -19,10 +19,10 @@ paddle train \
+ --config='translation/train.conf' \
+ --save_dir='translation/model' \
+ --use_gpu=false \
+---num_passes=16 \
++--num_passes=4 \
+ --show_parameter_stats_period=100 \
+---trainer_count=4 \
++--trainer_count=1 \
+ --log_period=10 \
+---dot_period=5 \
++--dot_period=1 \
+ 2>&1 | tee 'translation/train.log'
+ paddle usage -l 'translation/train.log' -e $? -n "seqToseq_translation_train" >/dev/null 2>&1

@@ -1,5 +1,5 @@
 diff --git demo/seqToseq/translation/train.sh demo/seqToseq/translation/train.sh
-index b0ec9854..d3eb66ed 100755
+index 76da076..3d0d013 100755
 --- demo/seqToseq/translation/train.sh
 +++ demo/seqToseq/translation/train.sh
 @@ -18,7 +18,7 @@ cd ..
@@ -7,7 +7,7 @@ index b0ec9854..d3eb66ed 100755
  --config='translation/train.conf' \
  --save_dir='translation/model' \
 ---use_gpu=false \
-+--use_gpu=1 \
- --num_passes=16 \
++--use_gpu=true \
+ --num_passes=4 \
  --show_parameter_stats_period=100 \
- --trainer_count=4 \
+ --trainer_count=1 \
