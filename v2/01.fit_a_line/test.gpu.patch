@@ -1,0 +1,44 @@
+diff --git 01.fit_a_line/README.en.md 01.fit_a_line/README.en.md
+index b7d60ec..1577c21 100644
+--- 01.fit_a_line/README.en.md
++++ 01.fit_a_line/README.en.md
+@@ -119,7 +119,7 @@ When training complex models, we usually have one more split: the validation set
+ ### Initialize PaddlePaddle
+ 
+ ```python
+-paddle.init(use_gpu=False, trainer_count=1)
++paddle.init(use_gpu=True, trainer_count=1)
+ ```
+ 
+ ### Model Configuration
+@@ -216,7 +216,7 @@ trainer.train(
+             uci_housing.train(), buf_size=500),
+         batch_size=2),
+     feeding=feeding,
+-    event_handler=event_handler_plot,
++    event_handler=event_handler,
+     num_passes=30)
+ ```
+ 
+diff --git 01.fit_a_line/README.md 01.fit_a_line/README.md
+index 5e7f6ee..48e910b 100644
+--- 01.fit_a_line/README.md
++++ 01.fit_a_line/README.md
+@@ -113,7 +113,7 @@ import paddle.v2.dataset.uci_housing as uci_housing
+ ### 初始化PaddlePaddle
+ 
+ ```python
+-paddle.init(use_gpu=False, trainer_count=1)
++paddle.init(use_gpu=True, trainer_count=1)
+ ```
+ 
+ ### 模型配置
+@@ -211,7 +211,7 @@ trainer.train(
+             uci_housing.train(), buf_size=500),
+         batch_size=2),
+     feeding=feeding,
+-    event_handler=event_handler_plot,
++    event_handler=event_handler,
+     num_passes=30)
+ ```
+ 

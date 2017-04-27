@@ -1,0 +1,44 @@
+diff --git 06.label_semantic_roles/README.en.md 06.label_semantic_roles/README.en.md
+index 7531ade..47351df 100644
+--- 06.label_semantic_roles/README.en.md
++++ 06.label_semantic_roles/README.en.md
+@@ -216,7 +216,7 @@ import paddle.v2 as paddle
+ import paddle.v2.dataset.conll05 as conll05
+ import paddle.v2.evaluator as evaluator
+ 
+-paddle.init(use_gpu=False, trainer_count=1)
++paddle.init(use_gpu=True, trainer_count=1)
+ 
+ word_dict, verb_dict, label_dict = conll05.get_dict()
+ word_dict_len = len(word_dict)
+@@ -479,7 +479,7 @@ def event_handler(event):
+ trainer.train(
+     reader=reader,
+     event_handler=event_handler,
+-    num_passes=10000,
++    num_passes=2,
+     feeding=feeding)
+ ```
+ 
+diff --git 06.label_semantic_roles/README.md 06.label_semantic_roles/README.md
+index 5343c3a..ed5f94b 100644
+--- 06.label_semantic_roles/README.md
++++ 06.label_semantic_roles/README.md
+@@ -194,7 +194,7 @@ import paddle.v2 as paddle
+ import paddle.v2.dataset.conll05 as conll05
+ import paddle.v2.evaluator as evaluator
+ 
+-paddle.init(use_gpu=False, trainer_count=1)
++paddle.init(use_gpu=True, trainer_count=1)
+ 
+ word_dict, verb_dict, label_dict = conll05.get_dict()
+ word_dict_len = len(word_dict)
+@@ -461,7 +461,7 @@ def event_handler(event):
+ trainer.train(
+     reader=reader,
+     event_handler=event_handler,
+-    num_passes=1,
++    num_passes=2,
+     feeding=feeding)
+ ```
+ 
